@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+
+{% block content %}
+    <div style="margin-top: 300px; margin-left: 45%">
+        <h1>{% trans "Выход из аккаунта магазина" %}</h1>
+
+        <p>{% trans 'Вы действительно хотите выйти?' %}</p>
+
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button type="submit">{% trans 'Выйти' %}</button>
+        </form>
+
+    </div>
+{% endblock content %}

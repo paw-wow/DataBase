@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="banner-area">
+		<div class="container">
+			<div class="row fullscreen align-items-center justify-content-start">
+				<div class="col-lg-12">
+					<div class="active-banner-slider owl-carousel">
+						<!-- single-slide -->
+                        {% for product in product_list %}
+						<div class="row single-slide align-items-center d-flex">
+							<div class="col-lg-5 col-md-6">
+								<div class="banner-content">
+									<h1>{{ product.name}}</h1>
+									<p>{{ product.description }}</p>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+									<p><a href="{{ product.get_absolute_url }}"><img class="img-fluid" src="{{ product.preview.url }}"></a></p>
+								</div>
+							</div>
+						</div>
+                        {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- start features Area -->
+	<section class="features-area section_gap">
+		<div class="container">
+			<div class="row features-inner">
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="static/img/features/f-icon1.png" alt="">
+						</div>
+						<h6>Бесплатная доставка по городу</h6>
+						<p>Бесплатная доставка</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="static/img/features/f-icon2.png" alt="">
+						</div>
+						<h6>Удобный возврат средств</h6>
+						<p>Бесплатная доставка</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="static/img/features/f-icon3.png" alt="">
+						</div>
+						<h6>24/7 Онлайн помощь</h6>
+						<p>Бесплатная доставка</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="static/img/features/f-icon4.png" alt="">
+						</div>
+						<h6>Гарантия вашей покупки</h6>
+						<p>Бесплатная доставка</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="owl-carousel active-product-area section_gap">
+		<!-- single product slide -->
+		<div class="single-product-slider">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>Хиты продаж</h1>
+							<p>Разбирают, как горячие пирожки!</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- single product -->
+                    {% for product in product_list %}
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product">
+                            <p><a href="{{ product.get_absolute_url }}"><img class="img-fluid" src="{{ product.preview.url }}"></a></p>
+                                <div class="product-details">
+                                    <h6>{{ product.name }}</h6>
+                                    <div class="price">
+                                        <h6>{{ product.price }}</h6>
+                                    </div>
+                                </div>
+                        </div>
+					</div>
+                {% endfor %}
+				</div>
+			</div>
+		</div>
+		<!-- single product slide -->
+		<div class="single-product-slider">
+			<div class="container">
+			</div>
+		</div>
+	</section>
+{% endblock content %}

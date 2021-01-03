@@ -1,0 +1,45 @@
+{% extends "account/base.html" %}
+{% block content %}
+{% load static %}
+    <section class="checkout_area section_gap">
+        <div class="container" style="margin-top: 200px">
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Детали заказа</h3>
+                        {% for item in cart %}
+                            <table border="0" cellspacing="0" cellpadding="12" width="500">
+                            <tr>
+                                <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+                                    <th align="center">Название товара</th>
+                                    <th align="center">Количество</th>
+                                    <th align="center">Цена</th>
+                                    <th align="center">Окончательная цена</th>
+                            </tr>
+                            <tr height="200">
+                            <div class="col-md-6 form-group p_star">
+                                <td valign="top"><a>{{ item.product.name }}</a></td>
+                            </div>
+                            <div class="col-md-6 form-group p_star">
+                                <td valign="top"><a>{{ item.quantity }}</a></td>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <td valign="top"><a>{{ item.total_price }} ₽</a></td>
+                            </div>
+                            <td valign="top"><p>{{ cart.get_total_price }}</p></td>
+                        {% endfor %}
+                        </form>
+                        </tr>
+                        </table>
+                        <form action="." method="post" class="order-form">
+                            {{ form.as_p }}
+                            <p><input type="submit" class="primary-btn" value="Place order"></p>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+{% endblock content %}

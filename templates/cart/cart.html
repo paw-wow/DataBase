@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Товар</th>
+                                <th scope="col">Стоимость</th>
+                                <th scope="col">Количество</th>
+                                <th scope="col">Итого</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <p>{{ product.name }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>{{ item.price }}</h5>
+                                </td>
+                                <td>{{ item.quantity }}</td>
+                                <td class="num">₽{{ item.total_price }}</td>
+                            </tr>
+                            <tr class="out_button_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <a class="gray_btn" href="/">Вернуться в магазин</a>
+                                        <a class="primary-btn" href="{% url "orders:order_create" %}">Купить</a>
+                                        <a class="primary-btn"
+                                           href="{% url "cart:cart_remove" product.id %}">Удалить</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {% endwith %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
